@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>Sensive Blog - Home</title>
+  <title>Sensive Blog - Home</title>
 {% endblock %}
 
 {% block content %}
@@ -27,19 +27,25 @@
     <div class="container">
       <div class="d-flex">
         {% for post in most_popular_posts %}
-        <div class="flex-fill" {% if not forloop.last %} style="margin-right: 30px;" {% endif %}>
-          <div class="card blog__slide text-center">
-            <div class="blog__slide__img">
-              <img class="card-img rounded-0"
-                src="{% if post.image_url %}  {{ post.image_url }} {% else %} {% static 'img/banner/blog.png' %} {% endif %}"
-                alt="image for post">
-            </div>
-            <div class="blog__slide__content">
-              <h3><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h3>
-              <p>{{ post.published_at }}</p>
+          <div class="flex-fill" {% if not forloop.last %} style="margin-right: 30px;" {% endif %}>
+            <div class="card blog__slide text-center">
+              <div class="blog__slide__img">
+                <img class="card-img rounded-0"
+                  src="{% if post.image_url %}  
+                      {{ post.image_url }} 
+                    {% else %} 
+                      {% static 'img/banner/blog.png' %} 
+                    {% endif %}"
+                  alt="image for post">
+              </div>
+              <div class="blog__slide__content">
+                <h3>
+                  <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+                </h3>
+                <p>{{ post.published_at }}</p>
+              </div>
             </div>
           </div>
-        </div>
         {% endfor %}
       </div>
     </div>
